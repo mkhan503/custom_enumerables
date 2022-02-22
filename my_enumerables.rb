@@ -1,7 +1,7 @@
 module Enumerable
   def my_each
-    for i in (1..self.length)
-      yield(self[i - 1])
+    for i in self do
+      yield i 
     end
     self
   end
@@ -16,8 +16,8 @@ module Enumerable
   def my_select
     
     return_array = []
-    for i in (0..self.length - 1)
-      return_array << self[i] if yield(self[i]) == true
+    for i in self do 
+      return_array << i if yield i == true
     end
     return_array
 
@@ -30,8 +30,8 @@ module Enumerable
   end
 
   def my_all?
-    for i in (0..self.length - 1)
-      return false if yield(self[i]) == false
+    for i in self do 
+      return false if yield(i) == false
     end
     return true
   end
